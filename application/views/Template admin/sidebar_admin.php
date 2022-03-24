@@ -5,7 +5,7 @@
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center">
             <div class="sidebar-brand-icon">
-                <img src="<?php echo base_url('assets/img/logo_a.png')?>" width="70%">
+                <img src="<?php echo base_url('assets/img/logo_a.png') ?>" width="70%">
 
             </div>
         </a>
@@ -15,20 +15,32 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a href="<?php echo base_url().'admin/home' ?>" class="nav-link">
+            <a href="<?php echo base_url() . 'admin/home' ?>" class="nav-link">
                 <span>Beranda</span></a>
         </li>
         <hr class="sidebar-divider">
         <li class="nav-item active">
-            <a href="<?php echo base_url().'admin/surat' ?>" class="nav-link">
+            <a href="<?php echo base_url() . 'admin/surat' ?>" class="nav-link">
                 <span>Berita</span></a>
         </li>
+        <!-- 
+        <hr class="sidebar-divider">
+        <li class="nav-item active">
+            <a href="<?php echo base_url() . 'admin/surat' ?>" class="nav-link">
+                <span>Penyakit</span></a>
+        </li>
+
+        <hr class="sidebar-divider">
+        <li class="nav-item active">
+            <a href="<?php echo base_url() . 'admin/surat' ?>" class="nav-link">
+                <span>Gejala</span></a>
+        </li> -->
 
         </li>
         <hr class="sidebar-divider">
         <li class="nav-item active">
-            <a href="<?php echo base_url().'admin/surat/suratMasuk' ?>" class="nav-link">
-                <span>Penyakit</span></a>
+            <a href="<?php echo base_url() . 'admin/Penyakit' ?>" class="nav-link">
+                <span>Penyakit & Gejala</span></a>
         </li>
 
         <!-- Divider -->

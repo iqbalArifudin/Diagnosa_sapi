@@ -15,95 +15,116 @@ class Penyakit extends CI_Controller
 
     public function index()
     {
-        $data['Penyakit'] = $this->Penyakit_model->tampilPenyakit();
+        $data['penyakit'] = $this->Penyakit_model->tampilPenyakit();
         $this->load->view('template admin/header_admin', $data);
         $this->load->view('template admin/sidebar_admin', $data);
         $this->load->view('template admin/topbar_admin', $data);
-        $this->load->view('admin/Penyakit/index', $data);
+        $this->load->view('Admin/Penyakit/index', $data);
         $this->load->view('template admin/footer_admin', $data);
     }
 
     public function tambahPenyakit()
     {
-        $this->load->library('form_validation');
-        $this->form_validation->set_rules('keterangan', 'keterangan', 'required');
-        $data['penduduk'] = $this->Penduduk_model->getPenduduk($this->session->userdata('id_penduduk'));
-        $data['Penyakit'] = $this->Penyakit_model->tampilPenyakit();
+        $this->form_validation->set_rules('jenis_penyakit', 'jenis_penyakit', 'required');
+        $data['penyakit'] = $this->Penyakit_model->tampilPenyakit();
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('template admin/header_admin', $data);
-            $this->load->view('template admin/sidebar_admin');
-            $this->load->view('template admin/topbar_admin');
-            $this->load->view('admin/Penyakit/tambah_admin', $data);
-            $this->load->view('template admin/footer_admin');
+            $this->load->view('template admin/sidebar_admin', $data);
+            $this->load->view('template admin/topbar_admin', $data);
+            $this->load->view('Admin/Penyakit/Tambahpenyakit', $data);
+            $this->load->view('template admin/footer_admin', $data);
         } else {
             $this->Penyakit_model->tambahPenyakit();
             $this->session->set_flashdata(
                 'message',
                 '<div class="alert alert-success alert-dismissible fade show" role="alert">
-              Kritik atau Saran Anda Berhasil Dikirim ! 
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>'
+          Berhasil Ditambahkan ! 
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>'
             );
-            redirect('admin/Penyakit', 'refresh');
+            redirect('Admin/Penyakit', 'refresh');
         }
     }
 
-    public function edit($id_Penyakit)
+    public function editpenyakit($id_penyakit)
     {
         $this->load->library('form_validation');
-        $data['Penyakit'] = $this->Penyakit_model->getPenyakit($id_Penyakit);
-        $data['penduduk'] = $this->Penduduk_model->getPenduduk($this->session->userdata('id_penduduk'));
-        $this->form_validation->set_rules('keterangan', 'keterangan', 'required');
+        $data['penyakit'] = $this->Penyakit_model->getPenyakit($id_penyakit);
+        $this->form_validation->set_rules('jenis_penyakit', 'jenis_penyakit', 'required');
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('template admin/header_admin', $data);
             $this->load->view('template admin/sidebar_admin', $data);
             $this->load->view('template admin/topbar_admin', $data);
-            $this->load->view('admin/Penyakit/edit', $data);
+            $this->load->view('Admin/Penyakit/Editpenyakit', $data);
             $this->load->view('template admin/footer_admin', $data);
         } else {
-            $this->Penyakit_model->ubahPenyakit($id_Penyakit);
+            $this->Penyakit_model->ubahPenyakit($id_penyakit);
             $this->session->set_flashdata(
                 'message',
                 '<div class="alert alert-success alert-dismissible fade show" role="alert">
-                             Kritik atau Saran Berhasil Diedit !
-                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                 <span aria-hidden="true">&times;</span>
-                            </button>
-                            </div>'
+                         Data Berhasil Diedit !
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                             <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>'
             );
+            redirect('Admin/Penyakit', 'refresh');
+        }
+    }
+
+    public function hapuspenyakit($id_penyakit)
+    {
+        if ($this->Penyakit_model->hapusDataPenyakit($id_penyakit) == false) {
+            $this->session->set_flashdata('flashdata', 'gagal');
+            $this->session->set_flashdata('pesan2', 'Gagal Di hapus, Karena Data di pakai');
+            redirect('admin/Penyakit');
+        } else {
+            $this->load->library('session');
+            $this->session->set_flashdata('flashdata', 'dihapus');
+            $this->session->set_flashdata('pesan2', 'Data Berhasil Di hapus');
             redirect('admin/Penyakit', 'refresh');
         }
     }
 
-    public function hapus($id_Penyakit)
+    public function tambahGejala()
     {
-        if ($this->Penyakit_model->hapusData($id_Penyakit) == false) {
-            $this->session->set_flashdata(
-                'message',
-                '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                     Data tidak dapat dihapus !
-                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                         <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>'
-            );
-            redirect('admin/Penyakit');
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('jenis_gejala', 'jenis_gejala', 'required');
+        $data['penyakit'] = $this->Penyakit_model->tampilPenyakit();
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('template admin/header_admin', $data);
+            $this->load->view('template admin/sidebar_admin', $data);
+            $this->load->view('template admin/topbar_admin', $data);
+            $this->load->view('Admin/Penyakit/tambahgejala', $data);
+            $this->load->view('template admin/footer_admin', $data);
         } else {
-            $this->load->library('session');
+            $this->Penyakit_model->tambahGejala();
             $this->session->set_flashdata(
                 'message',
-                '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                     Data Berhasil dihapus !
-                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                         <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>'
+                '<div class="alert alert-success alert-dismissible fade show" role="alert">
+          Berhasil Ditambahkan ! 
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>'
             );
-            redirect('admin/Penyakit', 'refresh');
+            redirect('Admin/Penyakit', 'refresh');
         }
+    }
+
+    public function detail_all($id_penyakit)
+    {
+        $data['penyakit1'] = $this->Penyakit_model->getDetailPenyakit($id_penyakit);
+        $data['gejala'] = $this->Penyakit_model->tampilGejala();
+        $data['penyakit'] = $this->Penyakit_model->getTampilPenyakit($id_penyakit);
+        $this->load->view('template admin/header_admin', $data);
+        $this->load->view('template admin/sidebar_admin', $data);
+        $this->load->view('template admin/topbar_admin', $data);
+        $this->load->view('Admin/Penyakit/Detailpenyakit', $data);
+        $this->load->view('template admin/footer_admin', $data);
     }
 }
         /* End of fils admin.php */
