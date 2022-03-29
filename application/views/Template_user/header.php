@@ -71,8 +71,10 @@
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
 
-            <a href="#appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline">LOGIN</a>
-            <a href="#appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline">REGISTER</a>
+            <a href="<?php echo base_url() . 'User/Login' ?>" class="appointment-btn scrollto"><span
+                    class="d-none d-md-inline">LOGIN</a>
+            <a href="<?php echo base_url() . 'User/Register' ?>" class="appointment-btn scrollto"><span
+                    class="d-none d-md-inline">REGISTER</a>
 
         </div>
     </header><!-- End Header -->
