@@ -11,27 +11,30 @@ class Berita extends CI_Controller
             parent::__construct();
             $this->load->helper('url');
             $this->load->model('Berita_model');
+        $this->load->model('User_model');
      $this->load->helper('form');
         }
         
         public function index()
         {
+        $data['title'] = 'Halaman Berita';
+        $data['user'] = $this->User_model->tampilUserSaja($this->session->userdata('id_user'));
             $data['berita'] = $this->Berita_model->tampilBerita();
         $this->load->view('template admin/header_admin',$data);
-        $this->load->view('template admin/sidebar_admin',$data);
-        $this->load->view('template admin/topbar_admin',$data); 
+        $this->load->view('template admin/sidebar_admin', $data);
         $this->load->view('admin/berita/index',$data);
         $this->load->view('template admin/footer_admin',$data);  
         }
 
         public function tambahberita(){
             $this->load->library('form_validation');
+        $data['title'] = 'Halaman Tambah Berita';
+        $data['user'] = $this->User_model->tampilUserSaja($this->session->userdata('id_user'));
             $data['berita'] = $this->Berita_model->tampilBerita();
             $this->form_validation->set_rules('judul_berita', 'judul_berita', 'required');
             if($this->form_validation->run() == FALSE){
                 $this->load->view('template admin/header_admin',$data);
-                $this->load->view('template admin/sidebar_admin',$data);
-                $this->load->view('template admin/topbar_admin',$data); 
+            $this->load->view('template admin/sidebar_admin', $data);
                 $this->load->view('admin/Berita/Tambah',$data );
                 $this->load->view('template admin/footer_admin',$data);  
             }
@@ -66,13 +69,13 @@ class Berita extends CI_Controller
 
         public function editberita($id_berita)
         {
+        $data['title'] = 'Halaman Edit Berita';
         $data['berita'] = $this->Berita_model->getBerita($id_berita);
         $this->form_validation->set_rules('judul_berita', 'judul_berita', 'required|trim');
 
         if ($this->form_validation->run() == false) {
                 $this->load->view('template admin/header_admin',$data);
-                $this->load->view('template admin/sidebar_admin',$data);
-                $this->load->view('template admin/topbar_admin',$data); 
+            $this->load->view('template admin/sidebar_admin', $data);
                 $this->load->view('admin/berita/edit',$data);
                 $this->load->view('template admin/footer_admin',$data); 
         } else {
@@ -121,13 +124,12 @@ class Berita extends CI_Controller
     }
     
         public function detail($id_berita){
-        $data['penduduk'] = $this->Penduduk_model->getPenduduk($this->session->userdata('id_penduduk'));
+        $data['title'] = 'Halaman Detail Berita';
         $data['berita'] = $this->Berita_model->getDetail($id_berita);
-            $this->load->view('template admin/header',$data);
-            $this->load->view('template admin/sidebar');
-            $this->load->view('template admin/topbar'); 
+        $this->load->view('template admin/header_admin', $data);
+        $this->load->view('template admin/sidebar_admin');
             $this->load->view('admin/berita/detail' ,$data);
-            $this->load->view('template admin/footer'); 
+        $this->load->view('template admin/footer_admin'); 
         } 
 
     }

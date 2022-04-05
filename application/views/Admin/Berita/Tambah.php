@@ -26,8 +26,6 @@
                             </div>
                             <?php endif; ?>
                             <form action="" method="post" enctype="multipart/form-data">
-                                <br>
-
                                 <div class="form-group">
                                     <label for="nim">Judul Berita</label>
                                     <input type="text" class="form-control" id="judul_berita" name="judul_berita"
@@ -36,8 +34,8 @@
 
                                 <div class="form-group">
                                     <label for="nim">Keterangan</label>
-                                    <input type="text" class="form-control" id="keterangan_berita"
-                                        name="keterangan_berita" required>
+                                    <textarea name="keterangan_berita" id="keterangan_berita" cols="30" rows=""
+                                        class="form-control" required></textarea>
                                 </div>
 
                                 <label for="">Foto Berita</label>

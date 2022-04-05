@@ -17,7 +17,7 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-header">
-                            Form Tambah Data Penyakit
+                            Form Tambah Jenis Penyakit
                         </div>
                         <div class="card-body">
                             <?php if (validation_errors()) : ?>
@@ -26,8 +26,6 @@
                             </div>
                             <?php endif; ?>
                             <form action="" method="post" enctype="multipart/form-data">
-                                <br>
-
                                 <div class="form-group">
                                     <label for="nim">Jenis Penyakit</label>
                                     <input type="text" class="form-control" id="jenis_penyakit" name="jenis_penyakit"

@@ -20,9 +20,7 @@ class Login extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Login';
-            $this->load->view('Template_user/header', $data);
             $this->load->view('User/Login', $data);
-            $this->load->view('Template_user/footer', $data);
         } else {
             $this->_login();
         }
@@ -58,7 +56,7 @@ class Login extends CI_Controller
                 if ($user['level'] == 'Peternak') {
                     redirect('User/Home_peternak');
                 } else {
-                    redirect('Admin/Home');
+                    redirect('Admin/Berita');
                 }
             } else {
                 $this->session->set_flashdata(

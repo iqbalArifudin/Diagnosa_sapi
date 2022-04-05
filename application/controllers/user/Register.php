@@ -22,9 +22,8 @@ class Register extends CI_Controller
         $this->form_validation->set_rules('nama', 'nama', 'required');
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('Template_user/header', $data);
             $this->load->view('User/Register', $data);
-            $this->load->view('Template_user/footer', $data);
+
         } else {
             $upload = $this->User_model->upload();
             if ($upload['result'] == 'success') {

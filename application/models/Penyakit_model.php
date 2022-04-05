@@ -47,6 +47,7 @@ class Penyakit_model extends CI_Model
     public function getPenyakit($id_penyakit)
     {
         $this->db->select('penyakit.*');
+        $this->db->where('id_penyakit', $id_penyakit);
         return $this->db->get('penyakit')->result();
     }
 
