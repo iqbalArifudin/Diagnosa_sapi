@@ -79,14 +79,6 @@
                                                 <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="foto" name="foto"
-                                                    autofocus>
-                                                <label class="custom-file-label" for="customFile">FOTO</label>
-                                                <!-- <?= form_error('image', '<small class="text-danger pl-3">', '</small>'); ?> -->
-                                            </div>
-                                        </div>
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Registrasi Akun
                                         </button>
@@ -94,7 +86,7 @@
                                     <hr>
                                     <div class="text-center">
                                         <a class="small" href=<?php echo base_url() . 'User/Login' ?>>Sudah Punya
-                                            Akun</a>
+                                            Akun ?</a>
                                     </div>
                                 </div>
                             </div>
@@ -117,6 +109,13 @@
 
     <!-- Custom scripts for all pages-->
     <script src="<?= base_url(); ?>assets/js/sb-admin-2.min.js"></script>
+
+    <script>
+    $('.custom-file-input').on('change', function() {
+        let fileName = $(this).val().split('\\').pop();
+        $(this).next('.custom-file-label').addClass("selected").html(fileName);
+    });
+    </script>
 
 </body>
 

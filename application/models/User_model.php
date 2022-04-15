@@ -16,7 +16,7 @@ class User_model extends CI_Model
     }
 
 
-    public function Register($upload)
+    public function Register()
     {
         $data = [
             'id_user' => $this->input->post('id_user', true),
@@ -25,27 +25,9 @@ class User_model extends CI_Model
             'no_hp' => $this->input->post('no_hp', true),
             'username' => $this->input->post('username', true),
             'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
-            'foto' => $upload['file']['file_name'],
             'level' => 'Peternak',
         ];
         $this->db->insert('user', $data);
-    }
-
-    public function upload()
-    {
-        $config['upload_path'] = './assets/foto_peternak/';
-        $config['allowed_types'] = 'jpg|png|jpeg';
-        $config['max_size']     = '10000';
-
-        $this->load->library('upload', $config);
-
-        if ($this->upload->do_upload('foto')) {
-            $return = array('result' => 'success', 'file' => $this->upload->data(), 'error' => '');
-            return $return;
-        } else {
-            $return = array('result' => 'failed', 'file' => '', 'error' => $this->upload->display_errors());
-            return $return;
-        }
     }
 
 

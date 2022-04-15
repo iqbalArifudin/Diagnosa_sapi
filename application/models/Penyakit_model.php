@@ -31,11 +31,34 @@ class Penyakit_model extends CI_Model
         $this->db->update('penyakit', $data);
     }
 
+    public function ubahGejala($id_gejala)
+    {
+        $data = [
+            'id_gejala' => $this->input->post('id_gejala', true),
+            'jenis_gejala' => $this->input->post('jenis_gejala', true),
+        ];
+        $this->db->where('id_gejala', $id_gejala);
+        $this->db->update('gejala', $data);
+    }
+
     public function hapusDataPenyakit($id_penyakit)
     {
         $this->db->where('id_penyakit', $id_penyakit);
         if (
             $this->db->delete('penyakit')
+
+        ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function hapusDataGejala($id_gejala)
+    {
+        $this->db->where('id_gejala', $id_gejala);
+        if (
+            $this->db->delete('gejala')
 
         ) {
             return true;
@@ -59,10 +82,34 @@ class Penyakit_model extends CI_Model
         return $this->db->get('gejala')->result();
     }
 
+    public function getDetailGejala($id_gejala)
+    {
+        $this->db->select('gejala.*, penyakit.*');
+        $this->db->join('penyakit', 'gejala.id_penyakit = penyakit.id_penyakit');
+        $this->db->where('id_gejala', $id_gejala);
+        return $this->db->get('gejala')->result();
+    }
+
     public function tampilGejala()
     {
         $this->db->select('gejala.*, penyakit.*');
         $this->db->join('penyakit', 'gejala.id_penyakit = penyakit.id_penyakit');
+        return $this->db->get('gejala')->result();
+    }
+
+    public function getGejala($id_gejala)
+    {
+        $this->db->select('gejala.*');
+        $this->db->where('id_gejala', $id_gejala);
+        return $this->db->get('gejala')->result();
+    }
+
+
+    public function tampilGejalasaja($id_penyakit)
+    {
+        $this->db->select('gejala.*, penyakit.*');
+        $this->db->join('penyakit', 'gejala.id_penyakit = penyakit.id_penyakit');
+        $this->db->where('penyakit.id_penyakit', $id_penyakit);
         return $this->db->get('gejala')->result();
     }
 
@@ -78,5 +125,15 @@ class Penyakit_model extends CI_Model
         $this->db->select('penyakit.*');
         $this->db->where('id_penyakit', $id_penyakit);
         return $this->db->get('penyakit')->result();
+    }
+
+    public function tambahGejala($id)
+    {
+        $data = [
+            // 'id_keluarga' => $this->input->post('id_keluarga', true),
+            'id_penyakit' => $id,
+            'jenis_gejala' => $this->input->post('jenis_gejala', true),
+        ];
+        $this->db->insert('gejala', $data);
     }
 }

@@ -19,49 +19,70 @@
                  <div class="col">
                      <div class="card">
                          <div class="card-header">
-                             Detail Data Penyakit
+                             DETAIL DATA PENYAKIT
                          </div>
                          <div class="card-body">
                              <?php foreach ($penyakit as $p) : ?>
+                             <h6><strong>Jenis Penyakit :</strong> <?= $p->jenis_penyakit ?></h6>
+                             <hr>
+                             <h6><strong>Cara Pencegahan :</strong> <?= $p->pencegahan ?></h6>
 
+                             <?php endforeach ?>
+                             <p>
                              <div class="row">
                                  <div class="col">
                                      <table class="table table-bordered" id="">
                                          <thead>
                                              <tr>
-                                                 <th>Jenis Penyakit</th>
-                                                 <th>Cara Pencegahan</th>
+                                                 <th>No</th>
                                                  <th>Gejala</th>
+                                                 <th>Aksi</th>
                                              </tr>
                                          </thead>
                                          <tbody>
 
                                          </tbody>
                                          <tfoot>
-                                             <?php foreach ($penyakit as $p) : ?>
-                                             <td><?= $p->jenis_penyakit ?></td>
-                                             <td><?= $p->pencegahan ?></td>
-                                             <!-- <td><?= $p->pencegahan ?></td> -->
-
+                                             <?php $no = 1;
+                                                foreach ($gejala as $g) : ?>
+                                             <tr>
+                                                 <td><?= $no++ ?></td>
+                                                 <td><?= $g->jenis_gejala ?></td>
+                                                 <td style="width:180px">
+                                                     <a class='btn btn-danger'
+                                                         onclick="return confirm('Apakah Anda Yakin ingin menghapus data ini?')"
+                                                         href="<?= base_url() . 'admin/penyakit/hapusGejala/' . $g->id_gejala ?>">
+                                                         <i class="fa fa-trash" aria-hidden="true"></i>
+                                                     </a>
+                                                     <a class='btn btn-warning'
+                                                         href="<?= base_url() . 'admin/penyakit/editGejala/' . $g->id_gejala ?>">
+                                                         <i class="fas fa-edit" aria-hidden="true"></i>
+                                                     </a>
+                                             </tr>
                                              <?php endforeach ?>
                                          </tfoot>
                                      </table>
+                                     <center>
+                                         <a class='btn btn-warning'
+                                             href="<?= base_url() . 'Admin/Penyakit/tambahGejala/' . $p->id_penyakit ?>">
+                                             <i class="fas fa-plus" aria-hidden="true"><span> Tambah
+                                                     Data Gejala</span></i>
+                                         </a>
+                                     </center>
+                                     <br>
+
+
+                                     <a href="<?= base_url("Admin/Penyakit/") ?>" class="btn btn-primary">Kembali</a>
                                  </div>
                              </div>
-                             <p>
-
-                                 <?php endforeach ?>
-                             <h5> Data Pengajuan Keluarga :</h5>
-                             <br>
-                             <a href="<?= base_url("Admin/Penyakit/") ?>" class="btn btn-primary">Kembali</a>
                          </div>
+                         <!-- /.row -->
                      </div>
+                     <!-- /.container-fluid -->
                  </div>
-                 <!-- /.row -->
+                 <!-- /.content -->
              </div>
-             <!-- /.container-fluid -->
+             <!-- /.content-wrapper -->
          </div>
-         <!-- /.content -->
      </div>
-     <!-- /.content-wrapper -->
  </div>

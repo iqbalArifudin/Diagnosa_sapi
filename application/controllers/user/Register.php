@@ -25,14 +25,9 @@ class Register extends CI_Controller
             $this->load->view('User/Register', $data);
 
         } else {
-            $upload = $this->User_model->upload();
-            if ($upload['result'] == 'success') {
-                $this->User_model->Register($upload);
+            $this->User_model->Register();
                 $this->session->set_flashdata('pesan', '<center>Registrasi Akun Anda Berhasil!</center>');
-                redirect('User/Login', 'refresh');
-            } else {
-                echo $upload['error'];
-            }
+            redirect('User/Login', 'refresh');
         }
     }
 }

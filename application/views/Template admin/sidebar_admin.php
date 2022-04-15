@@ -79,14 +79,14 @@ to get the desired effect
                             </a>
                         </li>
 
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="<?php echo base_url() . 'Admin/galeri' ?>" class="nav-link" id="navHome">
                                 <i class="nav-icon fas fa-camera"></i>
                                 <p>
                                     Galeri
                                 </p>
                             </a>
-                        </li>
+                        </li> -->
 
                         <li class="nav-item">
                             <a href="<?php echo base_url() . 'Admin/user' ?>" class="nav-link" id="navHome">

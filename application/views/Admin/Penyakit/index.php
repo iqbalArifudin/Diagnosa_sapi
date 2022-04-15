@@ -8,7 +8,8 @@
           <div class="container-fluid">
               <div class="row mb-2">
                   <div class="col-sm-6">
-                      <h3 class="m-0 text-primary"> <i class="nav-icon fas fa-newspaper"></i> Data Berita </h3>
+                      <h3 class="m-0 text-primary"> <i class="nav-icon fab fa-product-hunt"></i> Data Penyakit & Gejala
+                      </h3>
                   </div><!-- /.col -->
               </div><!-- /.row -->
           </div><!-- /.container-fluid -->
