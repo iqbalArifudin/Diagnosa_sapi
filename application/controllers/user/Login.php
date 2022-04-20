@@ -17,6 +17,9 @@ class Login extends CI_Controller
         $this->form_validation->set_rules('password', 'Password', 'required|trim', [
             'required' => 'Password tidak boleh kosong !',
         ]);
+        $this->form_validation->set_rules('username', 'Username', 'required|trim', [
+            'required' => 'Username tidak boleh kosong !',
+        ]);
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Login';
@@ -74,7 +77,7 @@ class Login extends CI_Controller
             $this->session->set_flashdata(
                 'message',
                 '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                   Email is not registered
+                   Username is not registered
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

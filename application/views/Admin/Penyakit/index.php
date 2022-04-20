@@ -29,7 +29,7 @@
                           <!-- /.card-header -->
                           <div class="card-body">
                               <div class='card-header'>
-                                  <a class='btn btn-primary' href="Penyakit/tambahPenyakit">
+                                  <a class='btn btn-primary' href="tambahPenyakit">
                                       <i class="fa fa-plus" aria-hidden="true"></i>
                                       <span>
                                           Tambah

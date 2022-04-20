@@ -20,6 +20,10 @@ class Register extends CI_Controller
         $data['title'] = 'Form Menambahkan Data Register';
         $this->load->library('form_validation');
         $this->form_validation->set_rules('nama', 'nama', 'required');
+        $this->form_validation->set_rules('alamat', 'alamat', 'required');
+        $this->form_validation->set_rules('no_hp', 'no_hp', 'required');
+        $this->form_validation->set_rules('username', 'username', 'required');
+        $this->form_validation->set_rules('passworrd', 'passworrd', 'required');
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('User/Register', $data);

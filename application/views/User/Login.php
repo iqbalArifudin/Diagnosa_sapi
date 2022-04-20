@@ -42,10 +42,11 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <?= $this->session->flashdata('message'); ?>
+
                             <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
                             <div class="col-lg-6">
                                 <div class="p-5">
+                                    <?= $this->session->flashdata('message'); ?>
                                     <div class="text-center">
                                         <img src="<?php echo base_url('assets/img/logo_a.png') ?>" width="50%">
                                     </div>
@@ -68,9 +69,6 @@
                                         <button class="btn btn-primary btn-user btn-block" type="submit">Login</button>
                                     </form>
                                     <hr>
-                                    <div class="text-center">
-                                        <a class="small" href="forgot-password.html">Lupa Password?</a>
-                                    </div>
                                     <div class="text-center">
                                         <a class="small" href=<?php echo base_url() . 'User/Register' ?>>Belum Punya
                                             Akun?</a>
