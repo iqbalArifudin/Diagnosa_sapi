@@ -24,13 +24,19 @@ to get the desired effect
                     <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="<?php echo base_url() . 'Admin/admin' ?>" class="nav-link">Home</a>
+                    <a href="<?php echo base_url() . 'Peternak/Home' ?>" class="nav-link">Home</a>
                 </li>
             </ul>
 
             <!-- Right navbar links -->
+            <?php foreach ($user as $p) : ?>
             <ul class="navbar-nav ml-auto">
+                <span class="nav-item d-none d-sm-inline-block" style="color:aliceblue"><i
+                        class="ion ion-ios-contact-outline"></i>&nbsp;
+                    Hallo
+                    <?= $p->nama ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
             </ul>
+            <?php endforeach ?>
         </nav>
         <!-- /.navbar -->
 
@@ -52,7 +58,7 @@ to get the desired effect
                with font-awesome or any other icon font library -->
 
                         <li class="nav-item ">
-                            <a href="<?php echo base_url() . 'Admin/Home' ?>" class="nav-link" id="navHome">
+                            <a href="<?php echo base_url() . 'Peternak/Home' ?>" class="nav-link" id="navHome">
                                 <i class="nav-icon fas fa-chart-line"></i>
                                 <p>
                                     Beranda
@@ -62,40 +68,24 @@ to get the desired effect
 
 
                         <li class="nav-item">
-                            <a href="<?php echo base_url() . 'Admin/berita' ?>" class="nav-link" id="navHome">
+                            <a href="<?php echo base_url() . 'Peternak/Jenis_penyakit' ?>" class="nav-link"
+                                id="navHome">
                                 <i class="nav-icon fas fa-newspaper"></i>
                                 <p>
-                                    Berita
+                                    Jenis Penyakit
                                 </p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="<?php echo base_url() . 'Admin/Penyakit' ?>" class="nav-link" id="navHome">
+                            <a href="<?php echo base_url() . 'Peternak/Penyakit' ?>" class="nav-link" id="navHome">
                                 <i class="nav-icon fab fa-product-hunt"></i>
                                 <p>
-                                    Penyakit & Gejala
+                                    Diagnosa Penyakit
                                 </p>
                             </a>
                         </li>
 
-                        <!-- <li class="nav-item">
-                            <a href="<?php echo base_url() . 'Admin/galeri' ?>" class="nav-link" id="navHome">
-                                <i class="nav-icon fas fa-camera"></i>
-                                <p>
-                                    Galeri
-                                </p>
-                            </a>
-                        </li> -->
-
-                        <li class="nav-item">
-                            <a href="<?php echo base_url() . 'Admin/user' ?>" class="nav-link" id="navHome">
-                                <i class="nav-icon fas fa-users"></i>
-                                <p>
-                                    User
-                                </p>
-                            </a>
-                        </li>
 
                         <li class="nav-item">
                             <a href="<?php echo base_url() . 'User/Login/logout'; ?>" class="nav-link" id="navHome">

@@ -130,7 +130,13 @@ class Berita extends CI_Controller
         $this->load->view('template admin/sidebar_admin');
             $this->load->view('admin/berita/detail' ,$data);
         $this->load->view('template admin/footer_admin'); 
-        } 
+        }
+
+    public function logout()
+    {
+        $this->session->sess_destroy();
+        redirect('User/login', 'refresh');
+    }
 
     }
         /* End of fils admin.php */

@@ -29,14 +29,6 @@ class Login extends CI_Controller
         }
     }
 
-    public function logout()
-    {
-        $this->session->unset_userdata('login_session');
-
-        // set_pesan('anda telah berhasil logout');
-        redirect('User/Login');
-    }
-
 
     private function _login()
     {
@@ -57,7 +49,7 @@ class Login extends CI_Controller
                 ];
                 $this->session->set_userdata($data);
                 if ($user['level'] == 'Peternak') {
-                    redirect('User/Home_peternak');
+                    redirect('Peternak/Home');
                 } else {
                     redirect('Admin/Berita');
                 }
@@ -85,5 +77,11 @@ class Login extends CI_Controller
             );
             redirect('User/Login');
         }
+    }
+
+    public function logout()
+    {
+        $this->session->sess_destroy();
+        redirect('User/login', 'refresh');
     }
 }

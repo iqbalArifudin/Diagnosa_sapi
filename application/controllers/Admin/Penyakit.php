@@ -161,5 +161,11 @@ class Penyakit extends CI_Controller
         $this->load->view('Admin/Penyakit/Detailpenyakit', $data);
         $this->load->view('template admin/footer_admin', $data);
     }
+
+    public function logout()
+    {
+        $this->session->sess_destroy();
+        redirect('User/login', 'refresh');
+    }
 }
         /* End of fils admin.php */
