@@ -19,7 +19,7 @@
 
                       <div class="card">
                           <div class="card-header">
-                              Form Edit Data Gejala
+                              Tambah Jenis Gejala
                           </div>
                           <div class="card-body">
                               <?php if (validation_errors()) : ?>
@@ -27,17 +27,31 @@
                                   <?= validation_errors(); ?>
                               </div>
                               <?php endif; ?>
-                              <?php foreach ($gejala as $gejala) : ?>
+
                               <form action="" method="post" enctype="multipart/form-data">
-                                  <input type="hidden" name="id_gejala" value="<?= $gejala->id_gejala; ?>">
+
+                                  <center>
+                                      <h5><strong>Masukkan Jenis Gejala</strong></h5>
+                                  </center>
 
                                   <div class="form-group">
-                                      <label for="merk">Jenis Gejala</label>
-                                      <input type="text" class="form-control" id="jenis_gejala" name="jenis_gejala"
-                                          value="<?= $gejala->jenis_gejala; ?>">
+                                      <label for="id_user">Jenis Gejala</label>
+                                      <select class="form-control" name="id_gejala" id="id_gejala">
+                                          <?php foreach ($gejala as $g) : ?>
+                                          <option value="<?= $g->id_gejala ?>"><?= $g->jenis_gejala ?></option>
+                                          <?php endforeach ?>
+                                      </select>
                                   </div>
 
-                                  <?php endforeach ?>
+                                  <!-- <div class="form-group">
+                                      <label for="nim">Jenis Gejala</label>
+                                      <input type="text" class="form-control" id="jenis_gejala" name="jenis_gejala">
+                                  </div> -->
+                                  <div class="form-group">
+                                      <label for="nim">Nilai Bobot</label>
+                                      <input type="number" step="any" class="form-control" id="nilai_bobot"
+                                          name="nilai_bobot">
+                                  </div>
                                   <button type="submit" name="submit" class="btn btn-success "><i
                                           class="fa fa-save"></i>&nbsp;&nbsp;Simpan</button>
                                   <a href="<?= base_url("admin/Penyakit"); ?>" class="btn btn-info"><i

@@ -78,10 +78,20 @@ to get the desired effect
                         </li>
 
                         <li class="nav-item">
-                            <a href="<?php echo base_url() . 'Peternak/Penyakit' ?>" class="nav-link" id="navHome">
-                                <i class="nav-icon fab fa-product-hunt"></i>
+                            <a href="<?php echo base_url() . 'Peternak/Diagnosa_penyakit' ?>" class="nav-link"
+                                id="navHome">
+                                <i class="nav-icon fas fa-plus-circle"></i>
                                 <p>
                                     Diagnosa Penyakit
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="<?php echo base_url() . 'Peternak/Riwayat' ?>" class="nav-link" id="navHome">
+                                <i class="nav-icon fab fa-product-hunt"></i>
+                                <p>
+                                    Riwayat Diagnosa
                                 </p>
                             </a>
                         </li>

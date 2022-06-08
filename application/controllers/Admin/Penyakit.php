@@ -11,6 +11,7 @@ class Penyakit extends CI_Controller
         parent::__construct();
         $this->load->helper('url');
         $this->load->model('Penyakit_model');
+        $this->load->model('Rule_model');
     }
 
     public function index()
@@ -75,32 +76,6 @@ class Penyakit extends CI_Controller
         }
     }
 
-    public function editGejala($id_gejala)
-    {
-        $this->load->library('form_validation');
-        $data['gejala'] = $this->Penyakit_model->getGejala($id_gejala);
-        $this->form_validation->set_rules('jenis_gejala', 'jenis_gejala', 'required');
-
-
-        if ($this->form_validation->run() == FALSE) {
-            $this->load->view('template admin/header_admin', $data);
-            $this->load->view('template admin/sidebar_admin', $data);
-            $this->load->view('Admin/Penyakit/Editgejala', $data);
-            $this->load->view('template admin/footer_admin', $data);
-        } else {
-            $this->Penyakit_model->ubahGejala($id_gejala);
-            $this->session->set_flashdata(
-                'message',
-                '<div class="alert alert-success alert-dismissible fade show" role="alert">
-                         Kritik atau Saran Berhasil Diedit !
-                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                             <span aria-hidden="true">&times;</span>
-                        </button>
-                        </div>'
-            );
-            redirect('admin/Penyakit', 'refresh');
-        }
-    }
 
     public function hapuspenyakit($id_penyakit)
     {
@@ -116,9 +91,9 @@ class Penyakit extends CI_Controller
         }
     }
 
-    public function hapusGejala($id_gejala)
+    public function hapusRule($id_gejala)
     {
-        if ($this->Penyakit_model->hapusDataGejala($id_gejala) == false) {
+        if ($this->Rule_model->hapusGejalaRule($id_gejala) == false) {
             $this->session->set_flashdata('flashdata', 'gagal');
             $this->session->set_flashdata('pesan2', 'Gagal Di hapus, Karena Data di pakai');
             redirect('admin/Penyakit');
@@ -130,22 +105,24 @@ class Penyakit extends CI_Controller
         }
     }
 
-    public function tambahGejala($id_penyakit)
+    public function tambahRule($id_penyakit)
     {
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('jenis_gejala', 'jenis_gejala', 'required');
+        $this->form_validation->set_rules('id_gejala', 'id_gejala', 'required');
         $data['title'] = 'Halaman Tambah Jenis Gejala';
         $data['penyakit'] = $this->Penyakit_model->getPenyakit($id_penyakit);
+        $data['gejala'] = $this->Penyakit_model->tampilGejala();
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('template admin/header_admin', $data);
             $this->load->view('template admin/sidebar_admin', $data);
-            $this->load->view('Admin/Penyakit/TambahGejala', $data);
+            $this->load->view('Admin/Penyakit/TambahRule', $data);
             $this->load->view('template admin/footer_admin', $data);
         } else {
-            $this->Penyakit_model->tambahGejala($this->uri->segment(4));
+            $this->Rule_model->tambahRule($this->uri->segment(4));
             redirect('Admin/Penyakit/detail_all/' . $this->uri->segment(4), 'refresh');
             $this->session->set_flashdata('flash-data', 'ditambahkan');
             echo "data berhasil ditambah";
+            
         }
     }
 
@@ -153,8 +130,7 @@ class Penyakit extends CI_Controller
     {
         $data['title'] = 'Halaman Detail Jenis Penyakit';
         // $data['penyakit1'] = $this->Penyakit_model->getDetailPenyakit($id_penyakit);
-        $data['gejala'] = $this->Penyakit_model->tampilGejalasaja($id_penyakit);
-        $data['gejala1'] = $this->Penyakit_model->getDetailGejala($id_penyakit);
+        $data['rule'] = $this->Rule_model->tampilrule($id_penyakit);
         $data['penyakit'] = $this->Penyakit_model->getTampilPenyakit($id_penyakit);
         $this->load->view('template admin/header_admin', $data);
         $this->load->view('template admin/sidebar_admin', $data);

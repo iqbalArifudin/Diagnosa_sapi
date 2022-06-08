@@ -48,7 +48,8 @@
     <header id="header" class="">
         <div class="container d-flex align-items-center">
 
-            <a href="index.html" class="logo me-auto"><img src="<?= base_url(); ?>assets/img/logo_KAN.png" alt=""></a>
+            <a href="<?php echo base_url() . 'User/Home' ?>" class="logo me-auto"><img
+                    src="<?= base_url(); ?>assets/img/logo_KAN.png" alt=""></a>
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <h1 class="logo me-auto"><a href="index.html">Medicio</a></h1> -->
 

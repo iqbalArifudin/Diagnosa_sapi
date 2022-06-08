@@ -51,7 +51,7 @@ class Login extends CI_Controller
                 if ($user['level'] == 'Peternak') {
                     redirect('Peternak/Home');
                 } else {
-                    redirect('Admin/Berita');
+                    redirect('Admin/Home');
                 }
             } else {
                 $this->session->set_flashdata(

@@ -23,7 +23,7 @@ class Register extends CI_Controller
         $this->form_validation->set_rules('alamat', 'alamat', 'required');
         $this->form_validation->set_rules('no_hp', 'no_hp', 'required');
         $this->form_validation->set_rules('username', 'username', 'required');
-        $this->form_validation->set_rules('passworrd', 'passworrd', 'required');
+        $this->form_validation->set_rules('password', 'password', 'required');
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('User/Register', $data);

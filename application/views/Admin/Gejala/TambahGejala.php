@@ -19,7 +19,7 @@
 
                       <div class="card">
                           <div class="card-header">
-                              Form Edit Data Penyakit
+                              Tambah Jenis Gejala
                           </div>
                           <div class="card-body">
                               <?php if (validation_errors()) : ?>
@@ -27,31 +27,22 @@
                                   <?= validation_errors(); ?>
                               </div>
                               <?php endif; ?>
-                              <?php foreach ($penyakit as $penyakit) : ?>
                               <form action="" method="post" enctype="multipart/form-data">
-                                  <input type="hidden" name="id_penyakit" value="<?= $penyakit->id_penyakit; ?>">
 
+                                  <center>
+                                      <h5><strong>Masukkan Jenis Gejala</strong></h5>
+                                  </center>
                                   <div class="form-group">
-                                      <label for="merk">Jenis Penyakit</label>
-                                      <input type="text" class="form-control" id="jenis_penyakit" name="jenis_penyakit"
-                                          value="<?= $penyakit->jenis_penyakit; ?>">
-                                  </div>
-
-                                  <div class="form-group">
-                                      <label for="merk">Cara Pencegahan</label>
-                                      <input type="text" class="form-control" id="pencegahan" name="pencegahan"
-                                          value="<?= $penyakit->pencegahan; ?>">
+                                      <label for="nim">Jenis Gejala</label>
+                                      <input type="text" class="form-control" id="jenis_gejala" name="jenis_gejala">
                                   </div>
                                   <div class="form-group">
-                                      <label for="merk">Kode Penyakit</label>
-                                      <input type="text" class="form-control" id="kode_penyakit" name="kode_penyakit"
-                                          value="<?= $penyakit->kode_penyakit; ?>">
+                                      <label for="nim">Kode Gejala</label>
+                                      <input type="text" class="form-control" id="kode_gejala" name="kode_gejala">
                                   </div>
-
-                                  <?php endforeach ?>
                                   <button type="submit" name="submit" class="btn btn-success "><i
                                           class="fa fa-save"></i>&nbsp;&nbsp;Simpan</button>
-                                  <a href="<?= base_url("admin/Penyakit"); ?>" class="btn btn-info"><i
+                                  <a href="<?= base_url("admin/Gejala"); ?>" class="btn btn-info"><i
                                           class="fa fa-reply"></i>&nbsp;&nbsp;Kembali</a>
                               </form>
                           </div>

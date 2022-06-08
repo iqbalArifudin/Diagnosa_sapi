@@ -79,6 +79,25 @@ to get the desired effect
                             </a>
                         </li>
 
+                        <li class="nav-item">
+                            <a href="<?php echo base_url() . 'Admin/Gejala' ?>" class="nav-link" id="navHome">
+                                <i class="nav-icon fab fa-product-hunt"></i>
+                                <p>
+                                    Data Gejala
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="<?php echo base_url() . 'Admin/Riwayat' ?>" class="nav-link" id="navHome">
+                                <i class="fas fa-hand-holding-heart nav-icon"></i>
+                                <p>
+                                    Riwayat Diagnosa
+                                </p>
+                            </a>
+                        </li>
+
+
                         <!-- <li class="nav-item">
                             <a href="<?php echo base_url() . 'Admin/galeri' ?>" class="nav-link" id="navHome">
                                 <i class="nav-icon fas fa-camera"></i>

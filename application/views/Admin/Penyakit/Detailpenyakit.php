@@ -44,19 +44,15 @@
                                          </tbody>
                                          <tfoot>
                                              <?php $no = 1;
-                                                foreach ($gejala as $g) : ?>
+                                                foreach ($rule as $g) : ?>
                                              <tr>
                                                  <td><?= $no++ ?></td>
                                                  <td><?= $g->jenis_gejala ?></td>
                                                  <td style="width:180px">
                                                      <a class='btn btn-danger'
                                                          onclick="return confirm('Apakah Anda Yakin ingin menghapus data ini?')"
-                                                         href="<?= base_url() . 'admin/penyakit/hapusGejala/' . $g->id_gejala ?>">
+                                                         href="<?= base_url() . 'admin/penyakit/hapusRule/' . $g->id_gejala ?>">
                                                          <i class="fa fa-trash" aria-hidden="true"></i>
-                                                     </a>
-                                                     <a class='btn btn-warning'
-                                                         href="<?= base_url() . 'admin/penyakit/editGejala/' . $g->id_gejala ?>">
-                                                         <i class="fas fa-edit" aria-hidden="true"></i>
                                                      </a>
                                              </tr>
                                              <?php endforeach ?>
@@ -64,7 +60,7 @@
                                      </table>
                                      <center>
                                          <a class='btn btn-warning'
-                                             href="<?= base_url() . 'Admin/Penyakit/tambahGejala/' . $p->id_penyakit ?>">
+                                             href="<?= base_url() . 'Admin/Penyakit/tambahRule/' . $p->id_penyakit ?>">
                                              <i class="fas fa-plus" aria-hidden="true"><span> Tambah
                                                      Data Gejala</span></i>
                                          </a>

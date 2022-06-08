@@ -36,6 +36,11 @@
                                     <label for="nim">Cara Pencegahan</label>
                                     <input type="text" class="form-control" id="pencegahan" name="pencegahan" required>
                                 </div>
+                                <div class="form-group">
+                                    <label for="nim">Kode Penyakit</label>
+                                    <input type="text" class="form-control" id="kode_penyakit" name="kode_penyakit"
+                                        required>
+                                </div>
 
                                 <p>
                                     <center>

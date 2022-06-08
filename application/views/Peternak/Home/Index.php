@@ -39,12 +39,12 @@
                                     <h3>
                                         <?php echo $this->db->get('gejala')->num_rows() ?>
                                         <h3>
-                                            <p>Diagnosa Penyakit</p>
+                                            <p>Riwayat Diagnosa Penyakit</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-pie-graph"></i>
                                 </div>
-                                <a href="<?php echo base_url() . 'Admin/Penyakit' ?>" class="small-box-footer">More
+                                <a href="<?php echo base_url() . 'Peternak/Riwayat' ?>" class="small-box-footer">More
                                     info <i class="fa fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
