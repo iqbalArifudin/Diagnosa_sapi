@@ -75,7 +75,6 @@ class Diagnosa_penyakit extends CI_Controller
             $this->load->view('Template/footer', $data);
         } else {
             $id_user = $this->session->userdata('id_user');
-            // $id_gejala =  $this->input->post("id_gejala", TRUE);
             // gejala yang dipilih user
             $pilihan_user = [];
             foreach ($_POST['gejala'] as $key => $value) {

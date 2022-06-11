@@ -14,9 +14,9 @@ class Riwayat extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'Halaman User';
+        $data['title'] = 'Halaman Riwayat Diagnosa';
         $data['user'] = $this->User_model->getUser($this->session->userdata('id_user'));
-        $data['riwayat_diagnosa'] = $this->Diagnosa_model->tampilRiwayat($this->session->userdata('id_user'));
+        $data['diagnosa'] = $this->Diagnosa_model->tampilRiwayatDiagnosa($this->session->userdata('id_user'));
         $this->load->view('Template/header', $data);
         $this->load->view('Template/sidebar', $data);
         $this->load->view('Peternak/Diagnosa/Riwayat', $data);

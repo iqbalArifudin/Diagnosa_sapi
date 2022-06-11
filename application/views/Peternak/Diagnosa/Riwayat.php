@@ -21,21 +21,29 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Jenis Gejala</th>
+                                        <!-- <th>Jenis Gejala</th> -->
                                         <th>Hasil Penyakit</th>
                                         <th>Cara Pencegahan</th>
                                         <th>Tanggal</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php $no = 1;
-                                    foreach ($riwayat_diagnosa as $p) : ?>
+                                    foreach ($diagnosa as $p) : ?>
                                     <tr>
                                         <td><?= $no++ ?></td>
-                                        <td><?= $p->gejala ?></ td>
-                                        <td><?= $p->jenis_gejala ?></td>
+                                        <!-- <td><?= $p->jenis_gejala ?></td> -->
+                                        <td><?= $p->jenis_penyakit ?></td>
                                         <td><?= $p->pencegahan ?></td>
                                         <td><?= $p->tanggal ?></td>
+                                        <td style="width:180px">
+                                            <a class='btn btn-info'
+                                                href='<?= base_url() . 'Peternak/Riwayat/detail/' . $p->id_hasil ?>'
+                                                class='btn btn-biru'>
+                                                <i class="fas fa-eye" aria-hidden="true"></i>
+                                            </a>
+                                        </td>
 
                                     </tr>
                                     <?php endforeach ?>

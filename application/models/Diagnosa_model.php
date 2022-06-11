@@ -34,12 +34,28 @@ class Diagnosa_model extends CI_Model
         return $this->db->query($query)->result_array();
     }
 
-    public function tampilRiwayat($id_user)
+    public function tampilRiwayatDiagnosa($id_user)
     {
-        $this->db->select('diagnosa.*, user.*');
-        $this->db->join('user', 'diagnosa.id_user = user.id_user');
+        $this->db->select('gejala.jenis_gejala, penyakit.jenis_penyakit, penyakit.pencegahan, diagnosa.tanggal');
+        $this->db->join('user', 'hasil_diagnosa.id_user = user.id_user');
+        $this->db->join('penyakit', 'hasil_diagnosa.diagnosa = penyakit.kode_penyakit');
+        $this->db->join('rules', 'penyakit.id_penyakit = rules.id_penyakit');
+        $this->db->join('gejala', 'rules.id_gejala = gejala.id_gejala');
+        $this->db->join('diagnosa', 'gejala.kode_gejala = diagnosa.gejala');
         $this->db->where('diagnosa.id_user', $id_user);
-        $this->db->order_by('tanggal', 'DESC');
-        return $this->db->get('diagnosa')->result();
+        $this->db->order_by('diagnosa.tanggal', 'DESC');
+        return $this->db->get('hasil_diagnosa')->result();
     }
+    // public function tampilRiwayatDiagnosa($id_user)
+    // {
+    //     $this->db->select('gejala.jenis_gejala, penyakit.jenis_penyakit, penyakit.pencegahan, diagnosa.tanggal');
+    //     $this->db->join('user', 'hasil_diagnosa.id_user = user.id_user');
+    //     $this->db->join('penyakit', 'hasil_diagnosa.diagnosa = penyakit.kode_penyakit');
+    //     $this->db->join('rules', 'penyakit.id_penyakit = rules.id_penyakit');
+    //     $this->db->join('gejala', 'rules.id_gejala = gejala.id_gejala');
+    //     $this->db->join('diagnosa', 'gejala.kode_gejala = diagnosa.gejala');
+    //     $this->db->where('diagnosa.id_user', $id_user);
+    //     $this->db->order_by('diagnosa.tanggal', 'DESC');
+    //     return $this->db->get('hasil_diagnosa')->result();
+    // }
 }
